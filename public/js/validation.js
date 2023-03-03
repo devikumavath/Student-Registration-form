@@ -1,5 +1,5 @@
 function validateForm(event) {
-    event.preventDefault();
+   event.preventDefault();
     let firstName = document.getElementById('firstName').value;
     let lastName = document.getElementById('lastName').value;
     let email = document.getElementById('email').value;
@@ -22,10 +22,9 @@ function validateForm(event) {
       alert('Invalid email format.');
       return false;
     }
-  
-    return true;
+    form.submit();
   }
-  
-  let form = document.querySelector('form');
-  form.addEventListener('submit', validateForm);
+
+let form = document.querySelector('form');
+form.addEventListener('submit', validateForm);
   
