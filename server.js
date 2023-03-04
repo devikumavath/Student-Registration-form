@@ -1,8 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 const app = express();
+//set view path to public folder 
+app.use(express.static(__dirname + '/public'));
 
 // create connection to the database
 const db = mysql.createConnection({
@@ -23,8 +25,13 @@ db.connect((err) => {
 // middleware to parse request body
 app.use(bodyParser.urlencoded({ extended: false }));
 
+
+app.get('/',(req,res)=>{
+  res.sendFile('index.html');
+})
+
 // POST route to handle form submission
-app.post('/', (req, res) => {
+app.post('/register', (req, res) => {
   let firstName = req.body.firstName;
   let lastName = req.body.lastName;
   let email = req.body.email;
